@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org.jaxrs"
+       xmlns:jaxws="http://cxf.apache.org/jaxws" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           				http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+           				http://cxf.apache.org/schemas/jaxrs
+           				http://cxf.apache.org/schemas/jaxrs.xsd
+           				http://cxf.apache.org/schemas/jaxws
+					    http://cxf.apache.org/schemas/jaxws.xsd
+           				http://www.springframework.org/schema/context
+           				http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+	
+	<context:component-scan base-package="com.globant.bootcamp.service" />
+	
+	<!-- https://www.wolfe.id.au/2011/05/22/using-jackson-with-apache-cxf/ -->
+	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+	
+	<jaxrs:server id="forecastServiceId" address="/" >
+        <jaxrs:serviceBeans>
+            <ref bean="forecastService" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <ref bean="jsonProvider"/>
+        </jaxrs:providers>
+        <!-- 
+        <jaxrs:features>
+            <cxf:logging/>
+        </jaxrs:features>
+         -->
+	</jaxrs:server>
+	
+	<!-- <jaxrs:server id="forecastServiceId" adress="/">
+		<jaxrs:serviceBeans>
+			<ref bean="forecastService"/>
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+       		<ref bean="jsonProvider"/> 
+   		</jaxrs:providers>
+	</jaxrs:server> -->
+
+</beans>
