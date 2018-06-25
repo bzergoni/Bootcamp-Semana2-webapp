@@ -6,6 +6,7 @@ public class Day {
 	private double thermalSensation;
 	private Wind wind;
 	private Atmosphere atmosphere;
+	private double temperature;
 	
 	public Day(){
 		this.setName(null);
@@ -51,6 +52,14 @@ public class Day {
 
 	public void setAtmosphere(Atmosphere atmosphere) {
 		this.atmosphere = atmosphere;
+	}
+
+	public double getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(double temperature) {
+		this.temperature = temperature;
 	}
 	
 	

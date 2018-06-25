@@ -24,7 +24,12 @@
   	<servlet-class>
   		org.apache.cxf.transport.servlet.CXFServlet
   	</servlet-class>
-  	<!-- <load-on-startup>1</load-on-startup> -->
+  	<!-- https://www.ibm.com/support/knowledgecenter/es/SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/twbs_jaxrs_configwebxml.html -->
+  	<init-param>
+    	<param-name>config-location</param-name>
+        <param-value>/WEB-INF/beans.xml</param-value>
+    </init-param>
+  	<load-on-startup>1</load-on-startup>
   </servlet>
   
   <servlet-mapping>
